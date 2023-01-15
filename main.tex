@@ -1,0 +1,44 @@
+\documentclass[10pt,landscape,a4paper]{article}
+
+\usepackage[margin=0.125in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[latin]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{
+  amsmath,
+  multicol,
+  tabularx,
+  listings,
+  sectsty,
+  lipsum,
+  charter
+}
+
+% =============== [ Custom Commands ] ===============
+\def\title#1{\hfil{\bf #1}\hfil\par\vskip 2pt\hrule}
+\def\cm#1#2{{\tt#1} \dotfill {#2}\\}
+% ===================================================
+
+\pdfinfo {
+  /Title    (Example Quick Reference Card)
+  /Author   (Rick Daalhuizen)
+  /Subject  (Some Description)
+}
+
+\pagestyle{empty}
+\lstset{language=Java}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+\begin{document}
+\begin{multicols*}{3}
+  \title{EXAMPLE REFERENCE CARD}
+  \vskip 0.3cm
+  
+  % ============= [ Content ] =============
+  \input{content/dotfill}
+  \input{content/code}
+  \input{content/paragraph}
+  % =======================================
+
+\end{multicols*}
+\end{document}
