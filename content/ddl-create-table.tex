@@ -1,0 +1,33 @@
+\section{DDL - Create Table}
+
+\begin{tiny}
+\begin{lstlisting}
+CREATE TABLE tabelnaam(
+    attribuutnaam gegevenstype 
+		  [default waarde]
+		  [column constraint],
+    ...,
+    [table constraint]
+);
+\end{lstlisting}
+\end{tiny}
+
+\subsection{Constraints}
+
+\cm{PRIMARY KEY}{key constraint + entity integrity constraint}
+\cm{NOT NULL}{Mag geen nullwaarde bevatten}
+\cm{CHECK}{Moet aan conditie voldoen}
+\cm{UNIQUE}{Moet uniek zijn}
+\cm{FOREIGN KEY}{referential integrity constraint}
+\cm{ON DELETE}{CASCADE / SET NULL}
+
+\subsection{Gegevenstype}
+\cm{CHAR|VARCHAR}{Alfanumerieke attributen}
+\cm{NUMERIC(n,m)}{Getallen}
+\cm{DATE}{Datum zonder tijd}
+\cm{TIME}{Tijd zonder datum}
+\cm{TIMESTAMP}{Datum en tijd}
+\cm{INTERVAL}{Tijd interval}
+\newline
+\say{Gebruik het datatype CHAR(n) enkel wanneer je zeker weet
+dat de attribuutwaarden een vaste lengte hebben}

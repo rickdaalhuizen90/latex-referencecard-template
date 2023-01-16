@@ -1,0 +1,53 @@
+\section{DDL - Alter, Drop, Sequence}
+
+\cm{INSERT}{Gegevens invoegen}
+\cm{UPDATE}{Gegevens wijzigen}
+\cm{DELETE}{Gegevens verwijderen}
+\cm{TRUNCATE}{Tabellen leegmaken}
+\cm{DROP}{Objecten verwijderen}
+\cm{ALTER}{Objecten wijzigen}
+\cm{ALTER ADD COLUMN|CONSTRAINT}{aan tabel toevoegen}
+\cm{ALTER DROP COLUMN|CONSTRAINT}{van tabel verwijderen}
+\cm{ALTER RENAME COLUMN|CONSTRAINT}{van tabel hernoemen}
+
+\begin{tiny}
+\begin{lstlisting}
+  INSERT INTO foo (foo, bar) VALUES (a, b);
+\end{lstlisting}
+
+\begin{lstlisting}
+  UPDATE tabelnaam
+  SET attribuutnaam=nieuwe waarde
+  WHERE conditie;
+\end{lstlisting}
+
+\begin{lstlisting}
+  DELETE FROM deps USING emp
+  WHERE deps.emp_id=emp.id
+  AND lower(name)='bob';
+\end{lstlisting}
+\end{tiny}
+
+\subsection{Sequence}
+\say{Wordt gebruikt om automatisch volgnummers te genereren.}
+
+\begin{tiny}
+\begin{lstlisting}
+  CREATE SEQUENCE [IF NOT EXISTS] sequencenaam
+  INCREMENT [BY ] increment
+  [MINVALUE minvalue | NO MINVALUE]
+  [MAXVALUE maxvalue| NO MAXVALUE]
+  [START [WITH] startwaarde
+  [CACHE cache]
+  [[NO] CYCLE]
+\end{lstlisting}
+
+\begin{lstlisting}
+  CREATE SEQUENCE seq_project_id
+  START WITH 100 INCREMENT BY 5;
+  -- 100 105 110 115 120...
+
+  INSERT INTO projects
+  VALUES ( nextval('seq_project_id'), 'Foo Bar');
+\end{lstlisting}
+\end{tiny}

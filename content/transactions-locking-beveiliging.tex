@@ -1,0 +1,49 @@
+\section{Transacties, Locking \& Beveiliging}
+
+Een transactie bestaat uit bij elkaar horende instructies,\\
+waarvoor de DBMS garantie geeft dat ze samen slagen of falen.
+
+\begin{tiny}
+\begin{lstlisting}
+BEGIN;
+BEGIN TRANSACTION;
+START TRANSACTION;
+
+SAVEPOINT foo;
+
+-- Alle queries worden hierin vastgelegd.
+-- LOCK wordt uitgevoerd per ROW.
+COMMIT;
+
+-- Alle statements worden hier teruggedraaid.
+ROLLBACK;
+ROLLBACK TO SAVEPOINT foo;
+
+END;
+END TRANSACTION;
+END WORK;
+
+BEGIN;
+\end{lstlisting}
+\end{tiny}
+
+\subsection{Privileges}
+\begin{tiny}
+\begin{lstlisting}
+CREATE USER user PASSWORD 'secret123';
+CREATE USER user SUPERUSER;
+
+CREATE ROLE admin WITH SUPERUSER;
+CREATE ROLE admin LOGIN INHERIT;
+
+GRANT ALL PRIVILEGES ON table TO user WITH GRANT OPTION;
+REVOKE ALL PRIVILEGES ON table FROM user CASCADE;
+
+DROP USER if exists user;
+DROP ROLE if exists admin;
+
+select * from information_schema.enabled_roles;
+select * from information_schema.role_column_grants;
+select * from information_schema.role_table_grants;
+\end{lstlisting}
+\end{tiny}

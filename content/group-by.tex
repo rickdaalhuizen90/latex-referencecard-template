@@ -1,0 +1,37 @@
+\section{Group By \& Outer Join}
+
+\begin{tiny}
+\begin{lstlisting}
+  -- Geef het hoogste salaris per afdeling:
+
+  SELECT department_id, MAX(salary)
+  FROM employees
+  GROUP BY department_id
+  ORDER BY department_id;
+\end{lstlisting}
+
+\begin{lstlisting}
+  -- Geef het hoogste salaris per afdeling,
+  -- waarvan de waarden kleiner zijn dan 45000:
+
+  SELECT department\_id, MAX(salary)
+  FROM employees
+  GROUP BY department_id
+  HAVING MAX(salary) <45000
+\end{lstlisting}
+\end{tiny}
+
+\subsection{Analystische functies}
+- Geeft 1 RIJ RESULTAAT per groep.\\
+- Staan altijd in de $SELECT$ of in de $HAVING$ clausule.\\
+- Staan NOOIT in de $WHERE$-clausule!\\
+- Houden geen rekening met $NULL$ waarden.\\
+\newline
+\cm{AVG}{Bereken gemiddelde}
+\cm{SUM}{Bereken de som}
+\cm{MIN}{Laagste getal}
+\cm{MAX}{Hoogste getal}
+\cm{COUNT}{Telt attribuutwaarden}
+
+Volgorde van uitvoering:\\
+$SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY$

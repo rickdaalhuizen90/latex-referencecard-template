@@ -1,0 +1,51 @@
+\section{Subqueries}
+Een subquery is een query in een andere query.
+\\
+• Wordt eerst de subquery uitgevoerd.\\
+• Levert waarden aan de hoofdquery.\\
+
+\begin{tiny}
+\begin{lstlisting}
+  SELECT *
+  FROM emplyoees
+  WHERE salary = (
+    SELECT MIN(salary) FROM employees
+  );
+\end{lstlisting}
+\end{tiny}
+\say{Eerst wordt de binnenste $SELECT$ uitgevoerd,\\
+daarna de buitenste
+}
+\\\\
+Waar kan je subquery schrijven?\\
+$SELECT, FROM, WHERE, HAVING$
+\\\\
+Subqueries die meer dan 1 rij opleveren\\
+\cm{$<ANY$}{Minder dan het hoogste}
+\cm{$>ANY$}{Meer dan de laagste}
+\cm{$=ANY$}{gelijk aan één van de resultaten}
+\cm{$!=ANY$}{verschillend van één van de resultaten}
+\cm{$>ALL$}{Meer dan de hoogste}
+\cm{$<ALL$}{Minder dan de laagste}
+\cm{$<>ALL$}{verschillend van alle resultaten}
+\\
+Alternatief:
+\cm{$<MAX$}{Minder dan het hoogste}
+\cm{$>MIN$}{Meer dan de laagste}
+\cm{$IN$}{gelijk aan één van de resultaten}
+\cm{$>MAX$}{Meer dan de hoogste}
+\cm{$<MIN$}{Minder dan de laagste}
+\cm{$NOT IN$}{verschillend van alle resultaten}
+
+\subsection{Views}
+Via een view kan men gegevens van de\\
+onderliggende tabel afschermen.
+
+\begin{tiny}
+\begin{lstlisting}
+  CREATE OR REPLACE VIEW v_dept_view
+    AS SELECT department_id,department_name
+      FROM DEPARTMENTS
+      ORDER BY department_id;
+\end{lstlisting}
+\end{tiny}

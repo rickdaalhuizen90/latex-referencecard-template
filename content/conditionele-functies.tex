@@ -1,0 +1,50 @@
+\section{Condtionele functies}
+
+\begin{tiny}
+\begin{lstlisting}
+  SELECT employee\_id, manager\_id,
+  GREATEST(employee\_id, manager\_id),
+  LEAST(employee\_id, manager\_id)
+  FROM employees;
+\end{lstlisting}
+
+\begin{lstlisting}
+  SELECT employee_id, province,
+    CASE province
+      WHEN 'NB' THEN 'Noord Brabant'
+      WHEN 'LI' THEN 'Limburg'
+      ELSE province
+    END "Full name"
+  FROM employees;
+\end{lstlisting}
+\end{tiny}
+
+\subsection{COALSCE}
+• De functie geeft de eerste $NOT NULL$ parameter\\
+van de parameterlijst terug.\\
+• De $COALESCE$ functie heeft minstens 2 parameters\\
+• Wanneer alle parameters een $NULL$ waarde bevatten,\\
+geeft de functie $NULL$ terug.\\
+
+\begin{tiny}
+\begin{lstlisting}
+  SELECT COALESCE(hours, 0) FROM tasks;
+\end{lstlisting}
+
+\begin{lstlisting}
+  SELECT name,
+    COALESCE(email, phone, cellphone) contact
+  FROM contact_info;
+\end{lstlisting}
+\end{tiny}
+
+\subsection{NULLIF}
+• Geeft NULL terug als beide expressies hetzelfde\\
+resultaat geven.\\
+• Bij ongelijkheid wordt de eerste parameter teruggegeven.
+
+\begin{tiny}
+\begin{lstlisting}
+  NULLIF(value1, value2)
+\end{lstlisting}
+\end{tiny}

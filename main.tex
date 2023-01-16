@@ -1,6 +1,6 @@
 \documentclass[10pt,landscape,a4paper]{article}
 
-\usepackage[margin=0.125in]{geometry}
+\usepackage[margin=0.225in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[latin]{babel}
 \usepackage[T1]{fontenc}
@@ -11,7 +11,9 @@
   listings,
   sectsty,
   lipsum,
-  charter
+  charter,
+  dirtytalk,
+  graphicx
 }
 
 % =============== [ Custom Commands ] ===============
@@ -20,25 +22,34 @@
 % ===================================================
 
 \pdfinfo {
-  /Title    (Example Quick Reference Card)
+  /Title    (Relational Databases 1)
   /Author   (Rick Daalhuizen)
-  /Subject  (Some Description)
+  /Subject  (KdG TI - Flex 2022-23)
 }
 
+\graphicspath{ {images/} }
 \pagestyle{empty}
-\lstset{language=Java}
+\lstset{language=SQL}
 \sectionfont{\fontsize{12}{15}\selectfont}
-
+\setcounter{secnumdepth}{0}
 \begin{document}
 \begin{multicols*}{3}
-  \title{EXAMPLE REFERENCE CARD}
+  \title{RELATIONAL DATABASES 1}
   \vskip 0.3cm
   
   % ============= [ Content ] =============
-  \input{content/dotfill}
-  \input{content/code}
-  \input{content/paragraph}
+  \input{content/inleidende-begrippen.tex}
+  \input{content/select-en-fetch.tex}
+  \input{content/joins.tex}
+  \input{content/group-by.tex}
+  \input{content/set-operators.tex}
+  \input{content/tekst-functies.tex}
+  \input{content/conditionele-functies.tex}
+  \input{content/ddl-create-table.tex}
+  \input{content/ddl-alter-drop-sequence.tex}
+  \input{content/subqueries-en-views.tex}
+  \input{content/indexes-en-correlated-subqueries.tex}
+  \input{content/transactions-locking-beveiliging.tex}
   % =======================================
-
 \end{multicols*}
 \end{document}

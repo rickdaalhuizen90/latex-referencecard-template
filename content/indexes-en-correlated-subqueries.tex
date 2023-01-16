@@ -1,0 +1,17 @@
+\section{Correlated Subqueries}
+Er is een ‘correlatie’ (= samenhang) tussen beide queries.
+\\
+• Daarna levert de subquery informatie aan de hoofdquery.\\
+• Levert de hoofdquery eerst informatie aan de subquery.\\
+
+\begin{tiny}
+\begin{lstlisting}
+  SELECT employee_id, last_name, department_id
+  FROM employees e
+  WHERE NOT EXISTS (
+    SELECT 'x'
+    FROM employees
+    WHERE manager_id = e.employee_id
+  );
+\end{lstlisting}
+\end{tiny}
